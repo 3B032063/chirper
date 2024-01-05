@@ -44,14 +44,11 @@ class ChirpController extends Controller
     /**
      * Display the specified resource.
      */
-    public function destroy(Chirp $chirp): RedirectResponse
+    public function show(Chirp $chirp)
     {
-        $this->authorize('delete', $chirp);
-
-        $chirp->delete();
-
-        return redirect(route('chirps.index'));
+        //
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -86,6 +83,10 @@ class ChirpController extends Controller
      */
     public function destroy(Chirp $chirp)
     {
-        //
+        $this->authorize('delete', $chirp);
+
+        $chirp->delete();
+
+        return redirect(route('chirps.index'));
     }
 }
